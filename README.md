@@ -61,7 +61,9 @@ Format:
 - Use any language for writing instructions, here I've shown two demos, one in English and one in Hindi.
 - Now select the whole text and Open the Command Palette (Ctrl+Shift+P).
 - Select `Intellectify: Write code`
+
 ![Write Code (English) Demo](demo/WriteCode(English).gif)
+
 ![Write Code (Hindi) Demo](demo/WriteCode(Hindi).gif)
 
 ### Generate documentation
@@ -77,6 +79,7 @@ Format:
 - Select `Intellectify: Do semantic search`, an input search box will appear.
 - Search anything with logical sense and Press `Enter`.
 - Whichever line is making most sense with your search will be get highlighted with viewpoint centered.
+
 ![Semantic Search Demo](demo/SemanticSearch.gif)
 ## Requirements
 
