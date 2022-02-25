@@ -54,15 +54,15 @@ Format:
    Your_Code
   "To_Language_Name:"
 ```
-![Convert Code Demo](demo/Convert Code.gif)
+![Convert Code Demo](demo/ConvertCode.gif)
 
 ### Generate code from instructions
 - Write proper step-wise instructions to get the desired result.
 - Use any language for writing instructions, here I've shown two demos, one in English and one in Hindi.
 - Now select the whole text and Open the Command Palette (Ctrl+Shift+P).
 - Select `Intellectify: Write code`
-![Write Code (English) Demo](demo/Write Code (English).gif)
-![Write Code (Hindi) Demo](demo/Write Code (Hindi).gif)
+![Write Code (English) Demo](demo/WriteCode(English).gif)
+![Write Code (Hindi) Demo](demo/WriteCode(Hindi).gif)
 
 ### Generate documentation
 - [imp.] Leave at least one empty line at the bottom of your selected text and do not include this empty line in your selection. (Else whole code will be commented out)
@@ -77,7 +77,7 @@ Format:
 - Select `Intellectify: Do semantic search`, an input search box will appear.
 - Search anything with logical sense and Press `Enter`.
 - Whichever line is making most sense with your search will be get highlighted with viewpoint centered.
-![Semantic Search Demo](demo/Semantic Search.gif)
+![Semantic Search Demo](demo/SemanticSearch.gif)
 ## Requirements
 
 Open AI API Key - visit the [website](https://openai.com/api/) to get one.
