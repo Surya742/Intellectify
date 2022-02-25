@@ -103,7 +103,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Release Notes
 
-#### 1.0.0
+#### 0.1.0
 Initial release
 
 
