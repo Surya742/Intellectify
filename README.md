@@ -100,6 +100,8 @@ To run this project, you will need to add the following environment variables to
 
 `OPENAI_API`
 
+Make sure to checkout the the path of .env file while importing it into the `extension.js` file.
+
 
 ## Release Notes
 
