@@ -2,7 +2,7 @@ require('dotenv').config({path: 'D:/PROJECTS/openAI VS EXT/openai-ext/.env'})
 const vscode = require('vscode');
 const { Configuration, OpenAIApi } = require("openai");
 
-//Functionalities:
+//Functionalities:-
 // 1. A code editor extension that allows for code sharing and collaboration between different programming languages.
 // 2. A code editor extension that automatically generates documentation for all code functions and classes.
 // 3. Semantic Search
@@ -155,7 +155,9 @@ function activate(context) {
 		
 				editor.edit(edit => {
 					edit.replace(editor.selection, res.data.choices[0].text);
-					vscode.commands.executeCommand('editor.action.addCommentLine');
+					setTimeout(() => {
+						vscode.commands.executeCommand('editor.action.addCommentLine');
+					}, 500);
 					
 					let selEndLine = editor.selection.end.line + 1;
 					const end = new vscode.Position(selEndLine, 0);
