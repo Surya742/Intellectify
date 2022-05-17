@@ -36,6 +36,7 @@ Open it in VS Code and start the server
 - Writing programming code using instructions in any natural language(e.g. English, Hindi, etc..).
 - Automatically generates documentation for all provided code functions and classes.
 - Semantic search in any file.
+- Summarization of any provided text.
 
 
 ## Demo
@@ -80,13 +81,15 @@ Format:
 - Search anything with logical sense and Press `Enter`.
 - Whichever line is making most sense with your search will be get highlighted with viewpoint centered.
 
+![Semantic Search Demo](demo/SemanticSearch.gif)
+
+
 ### Text summarization
 - Open any file and Open the Command Palette (Ctrl+Shift+P).
 - Select the portion of the file (or whole file) of which you want to get a summary of.
 - Select `Intellectify: Summarize`.
 - Summary will be get printed above the selected area.
 
-![Semantic Search Demo](demo/SemanticSearch.gif)
 ## Requirements
 
 Open AI API Key - visit the [website](https://openai.com/api/) to get one.
