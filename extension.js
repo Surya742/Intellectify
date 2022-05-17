@@ -7,6 +7,7 @@ const { Configuration, OpenAIApi } = require("openai");
 // 2. A code editor extension that automatically generates documentation for all code functions and classes.
 // 3. Semantic Search
 // 4. Writing programming code using instructions in natural languages.
+// 5. Summarizing the given text.
 
 /**
  * @param {vscode.ExtensionContext} context
