@@ -1,7 +1,7 @@
 
 # VS Code Extension - Smart Automations
 
-Your smart companion for your coding journey.
+Your smart companion for your educational journey.
 
 ## Run Locally
 
