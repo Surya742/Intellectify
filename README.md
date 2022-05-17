@@ -80,6 +80,12 @@ Format:
 - Search anything with logical sense and Press `Enter`.
 - Whichever line is making most sense with your search will be get highlighted with viewpoint centered.
 
+### Text summarization
+- Open any file and Open the Command Palette (Ctrl+Shift+P).
+- Select the portion of the file (or whole file) of which you want to get a summary of.
+- Select `Intellectify: Summarize`.
+- Summary will be get printed above the selected area.
+
 ![Semantic Search Demo](demo/SemanticSearch.gif)
 ## Requirements
 
