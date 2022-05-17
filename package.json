@@ -1,7 +1,7 @@
 {
 	"name": "intellectify",
 	"displayName": "Intellectify",
-	"description": "A wonderfull AI powered tool to ease down your development process with smart automations",
+	"description": "A wonderfull AI powered tool with smart automations",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.63.0"
@@ -13,7 +13,8 @@
 		"onCommand:Intellectify.convert",
 		"onCommand:Intellectify.generate",
 		"onCommand:Intellectify.search",
-		"onCommand:Intellectify.write"
+		"onCommand:Intellectify.write",
+		"onCommand:Intellectify.doSummarize"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -33,6 +34,10 @@
 			{
 				"command": "Intellectify.write",
 				"title": "Intellectify: Write code"
+			},
+			{
+				"command": "Intellectify.doSummarize",
+				"title": "Intellectify: Summarize"
 			}
 		]
 	},

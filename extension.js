@@ -176,6 +176,65 @@ function activate(context) {
 		
 	});
 
+
+	let summarize = vscode.commands.registerCommand('Intellectify.doSummarize', async function () {
+
+		vscode.window.withProgress({
+			location: vscode.ProgressLocation.Notification,
+			title: "Summarization",
+			cancellable: true
+		}, async (progress, token) => {
+			token.onCancellationRequested(() => {
+				vscode.window.showInformationMessage("Operation Canceled!");
+			});
+
+			progress.report({ increment: 0 });
+
+			setTimeout(() => {
+				progress.report({ increment: 10, message: "Summarizing..." });
+			}, 1000);
+
+			setTimeout(() => {
+				progress.report({ increment: 50, message: "Please hold! - almost there..." });
+			}, 3000);
+
+			const editor = vscode.window.activeTextEditor;
+			if(!editor) {
+				vscode.window.showInformationMessage("Editor does not exist");
+				return;
+			}
+			const text = editor.document.getText(editor.selection);
+
+			const prepairedDoc = await openai.createCompletion("text-davinci-001", {
+				prompt: `Summarize this text briefly:\n ${text}\n`,
+				max_tokens: 1000,
+				temperature: 0.5,
+			}).then(res => {
+				if (!res) throw Error;
+		
+				editor.edit(edit => {
+					edit.replace(editor.selection, res.data.choices[0].text);
+					setTimeout(() => {
+						vscode.commands.executeCommand('editor.action.addCommentLine');
+					}, 500);
+					
+					let selEndLine = editor.selection.end.line + 1;
+					const end = new vscode.Position(selEndLine, 0);
+					edit.insert(end, '\n');
+					edit.insert(end, text);
+					edit.insert(end, '\n');
+				});
+				vscode.window.showInformationMessage('Your response has been printed!');
+			})
+			.then(undefined, err => {
+				console.error('I am error', err);
+				vscode.window.showInformationMessage('Oops! there is an error');
+			});
+			return prepairedDoc;
+		});
+		
+	});
+
 	let sementicSearch = vscode.commands.registerCommand('Intellectify.search', async function () {
 
 		const editor = vscode.window.activeTextEditor;
@@ -244,6 +303,7 @@ function activate(context) {
 	context.subscriptions.push(generateDoc);
 	context.subscriptions.push(sementicSearch);
 	context.subscriptions.push(writeCode);
+	context.subscriptions.push(summarize);
 }
 
 // this method is called when your extension is deactivated
