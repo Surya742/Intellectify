@@ -8,6 +8,7 @@ const { Configuration, OpenAIApi } = require("openai");
 // 3. Semantic Search
 // 4. Writing programming code using instructions in natural languages.
 // 5. Summarizing the given text.
+// 6. Language Translation
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -212,7 +213,7 @@ function activate(context) {
 				temperature: 0.5,
 			}).then(res => {
 				if (!res) throw Error;
-		
+				console.log(res.data)
 				editor.edit(edit => {
 					edit.replace(editor.selection, res.data.choices[0].text);
 					setTimeout(() => {
@@ -285,6 +286,7 @@ function activate(context) {
 					query: result,
 				});
 				const bestMatch = response.data.data.sort((a, b) => a.score > b.score ? -1 : 1);
+				console.log(bestMatch)
 				const startpos = new vscode.Position(bestMatch[0].document,0);
 				const endPosActive = new vscode.Position(bestMatch[0].document,arr[bestMatch[0].document].length);
 				const newSelectionRef = new vscode.Selection(startpos, endPosActive);
