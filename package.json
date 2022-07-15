@@ -14,7 +14,8 @@
 		"onCommand:Intellectify.generate",
 		"onCommand:Intellectify.search",
 		"onCommand:Intellectify.write",
-		"onCommand:Intellectify.doSummarize"
+		"onCommand:Intellectify.doSummarize",
+		"onCommand:Intellectify.answer"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -35,6 +36,11 @@
 				"command": "Intellectify.write",
 				"title": "Intellectify: Write code"
 			},
+			{
+				"command": "Intellectify.answer",
+				"title": "Intellectify: Answer"
+			}
+			,
 			{
 				"command": "Intellectify.doSummarize",
 				"title": "Intellectify: Summarize"

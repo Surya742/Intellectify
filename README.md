@@ -37,6 +37,7 @@ Open it in VS Code and start the server
 - Automatically generates documentation for all provided code functions and classes.
 - Semantic search in any file.
 - Summarization of any provided text.
+- Language Translation
 
 
 ## Demo
@@ -90,6 +91,11 @@ Format:
 - Select `Intellectify: Summarize`.
 - Summary will be get printed above the selected area.
 
+### Language Translation
+- Select the portion of the file (or whole file) which you want to translate.
+- Select `Intellectify: Convert code`.
+- Traslation will be get printed above the selected area.
+
 ## Requirements
 
 Open AI API Key - visit the [website](https://openai.com/api/) to get one.
@@ -116,8 +122,6 @@ Make sure to checkout the the path of .env file while importing it into the `ext
 
 #### 0.1.0
 Initial release
-
-
 
 ## Author
 

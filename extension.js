@@ -208,7 +208,7 @@ function activate(context) {
 			const text = editor.document.getText(editor.selection);
 
 			const prepairedDoc = await openai.createCompletion("text-davinci-001", {
-				prompt: `Summarize this text briefly:\n ${text}\n`,
+				prompt: `Summarize in one paragraph:\n ${text}\n`,
 				max_tokens: 1000,
 				temperature: 0.5,
 			}).then(res => {
@@ -301,12 +301,75 @@ function activate(context) {
 		
 	});
 
+	let answer = vscode.commands.registerCommand('Intellectify.answer', async function () {
+
+		const editor = vscode.window.activeTextEditor;
+
+		const allFileText = editor.document.getText();
+		const arr = allFileText.split(/\r?\n/);
+
+	
+		const result = await vscode.window.showInputBox({
+			value: '',
+			valueSelection: [2, 4],
+			placeHolder: 'Ask your question',
+			validateInput: text => {
+				return text.length > 80 ? "Input can't exceed 80 characters" : null;
+			}
+		});
+
+		vscode.window.withProgress({
+			location: vscode.ProgressLocation.Notification,
+			title: "Answer",
+			cancellable: true
+		}, async (progress, token) => {
+			token.onCancellationRequested(() => {
+				vscode.window.showInformationMessage("Operation Canceled!");
+			});
+
+			progress.report({ increment: 0 });
+
+			setTimeout(() => {
+				progress.report({ increment: 10, message: "Searching..." });
+			}, 1000);
+
+			setTimeout(() => {
+				progress.report({ increment: 50, message: "Please hold! - almost there..." });
+			}, 3000);
+		
+			if(result === undefined){
+				vscode.window.showInformationMessage('Opration canceled!')
+			}
+			else if(result !== undefined && result.length === 0){
+				vscode.window.showInformationMessage('No question has been asked !')
+			}else if(arr.length == 0){
+				vscode.window.showInformationMessage('Asked on empty file!')
+			}else{
+				const response = await openai.createAnswer({
+					search_model: "ada",
+					model: "curie",
+					question: result,
+					documents: [...arr],
+					examples_context: "In 2017, U.S. life expectancy was 78.6 years.",
+					examples: [["What is human life expectancy in the United States?","78 years."],["How many hours a day on Earth have?","24 hours."]],
+					max_tokens: 15,
+  					stop: ["\n", "<|endoftext|>"],
+				});
+				console.log(response);
+				vscode.window.showInformationMessage(response.data.answers[0]);
+			}
+			return 0;
+		});
+		
+	});
+
 
 	context.subscriptions.push(codeConversion);
 	context.subscriptions.push(generateDoc);
 	context.subscriptions.push(sementicSearch);
 	context.subscriptions.push(writeCode);
 	context.subscriptions.push(summarize);
+	context.subscriptions.push(answer);
 }
 
 // this method is called when your extension is deactivated
