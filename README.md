@@ -38,6 +38,7 @@ Open it in VS Code and start the server
 - Semantic search in any file.
 - Summarization of any provided text.
 - Language Translation
+- Question & Answer feature
 
 
 ## Demo
